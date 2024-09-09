@@ -10,7 +10,10 @@ import com.juancon.filtrospring.application.services.MantBicicletaService;
 import com.juancon.filtrospring.domain.models.Bicicleta;
 import com.juancon.filtrospring.infrastructure.repositories.MantBicicletaRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class MantBicicletaAdapter implements MantBicicletaService{
 
     @Autowired

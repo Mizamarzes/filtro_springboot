@@ -37,6 +37,6 @@ public class Bicicleta {
     private Float precio;
 
     @Column(columnDefinition = "INT", nullable = false)
-    private Integer stock;
+    private int stock;
 
 }

@@ -2,6 +2,8 @@ package com.juancon.filtrospring.domain.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +34,7 @@ public class Modelo {
     @Column(columnDefinition = "VARCHAR(200)", nullable= false, length=200)
     private String descripcion;
 
+    @JsonIgnore
     @OneToMany(targetEntity=Bicicleta.class, mappedBy="modelo")
     private List<Bicicleta> bicicletas;
 }
