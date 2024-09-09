@@ -1,7 +1,5 @@
 package com.juancon.filtrospring.domain.models;
 
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,25 +18,36 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="bicicletas")
-public class Bicicleta {
+@Table(name="repuestos")
+public class Repuesto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT")
     private Long id;
-    
-    @ManyToOne(targetEntity=Modelo.class, cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "modelo")
-    private Modelo modelo;
 
-    @ManyToOne(targetEntity=Marca.class, cascade=CascadeType.PERSIST)
-    @JoinColumn(name = "marca")
-    private Marca marca;
+    @Column(columnDefinition = "VARCHAR(100)", nullable = false)
+    private String nombre;
+
+    @Column(columnDefinition = "VARCHAR(200)", nullable = false)
+    private String descripcion;
 
     @Column(columnDefinition = "DECIMAL(10,2)", nullable = false)
     private Float precio;
 
     @Column(columnDefinition = "INT", nullable = false)
     private int stock;
+
+    @ManyToOne
+    @JoinColumn(name = "proveedorId")
+    private Proveedor proveedor;
+
+    @ManyToOne
+    @JoinColumn(name = "modelo")
+    private Modelo modelo;
+
+    @ManyToOne
+    @JoinColumn(name = "marca")
+    private Marca marca;
 
 }

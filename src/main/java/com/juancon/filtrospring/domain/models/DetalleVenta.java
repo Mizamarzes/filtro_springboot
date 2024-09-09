@@ -1,5 +1,6 @@
 package com.juancon.filtrospring.domain.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,11 +26,11 @@ public class DetalleVenta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "bicicleta_id")
     private Bicicleta bicicleta_id;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.REMOVE)
     @JoinColumn(name = "venta_id")
     private Venta venta_id;
 

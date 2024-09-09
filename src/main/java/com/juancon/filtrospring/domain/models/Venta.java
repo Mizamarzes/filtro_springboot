@@ -2,6 +2,7 @@ package com.juancon.filtrospring.domain.models;
 
 import java.util.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Venta {
     @Column(columnDefinition = "DATE", nullable=false)
     private Date fecha;
     
-    @ManyToOne(targetEntity=Cliente.class)
+    @ManyToOne(targetEntity=Cliente.class, cascade=CascadeType.PERSIST)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente_id;
 
